@@ -4,6 +4,49 @@ import './App.css';
 import './common.css';
 
 class App extends Component {
+  constructor( props ) {
+    super ( props );
+    this.changeHandler  = this.changeHandler.bind(this);
+    this.handleSubmit  = this.handleSubmit.bind(this);
+    this.state = {
+        email: '',
+        password: '' 
+    }
+
+    // var someProperty = { ...this.state.email }
+    // someProperty.flag = true;
+  }
+
+  changeHandler = event => {
+    console.log(event)
+    const name = event.target.name;
+    const value = event.target.value;
+
+    this.setState({
+      formControls: {
+        [name]: value
+      }
+    });
+
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    let userData = this.state;
+
+    fetch('/fakeCall',{
+        method: "POST",
+        body: JSON.stringify(userData),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      }).then(response => {
+        response.json().then(data =>{
+          console.log("Successful - ", data);
+        })
+    })
+  }
+
   render() {
     return (
       <div className="container">
@@ -12,13 +55,21 @@ class App extends Component {
             <div className="q-login-page">
               <div className="form-area-login">
                 <div className="logo">
-                  <img src="" />
+                  <img src="" alt="Logo"/>
                 </div>
-                <form id="login-form">
+                <form id="login-form" onSubmit={this.handleSubmit}>
                   <label>Email</label>
-                  <input type="email" />
+                  <input type="email" 
+                    name="email" 
+                    value={this.state.email} 
+                    onChange={e => this.setState({ email : e.target.value })}
+                  />
                   <label>Password</label>
-                  <input type="password" />
+                  <input type="password" 
+                    name="password" 
+                    value={this.state.password} 
+                    onChange={e => this.setState({password : e.target.value })}
+                  />
                   <div className="buttons-sign">
                     <div className="normal-sign-in" clear>
                       <div className="forgot-password">
