@@ -1,5 +1,185 @@
-.App {
+.q-login-page {
+  max-width: 550px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.form-area-login .logo {
+  max-width: 90px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 0px;
+}
+
+.form-area-login .logo img {
+  width: 100%;
+}
+
+.form-area-login {
+  padding: 15px 10px 10px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  max-width: 550px;
+  width: 100%;
+}
+
+.q-login-page {
+  max-width: 550px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.o-auth {
+  margin: 0 -0.5%;
+  width: auto;
+}
+
+.form-area-login input {
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 0;
+  border-bottom: 1px solid #dadada;
+  outline: 0;
+  width: 100%;
+}
+
+.buttons-sign button {
+  display: block;
+  width: 100%;
   text-align: center;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-family: Arial;
+  border: 0;
+  padding: 5px;
+  background: #133444;
+  background: linear-gradient(#133444, #083d56 50%);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 400;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  outline: 0;
+  transition: all 0.2s linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons-sign button:focus {
+  color: #fff !important;
+}
+
+.buttons-sign button svg {
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.buttons-sign button.sign-in.normal {
+  padding: 7px 15px;
+  background: linear-gradient(#297296, #1c4c63 50%);
+  float: right;
+  width: auto;
+}
+
+.buttons-sign button.sign-in.normal:active {
+  background: linear-gradient(#1c4c63, #297296 50%);
+}
+
+.buttons-sign {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.buttons-sign .sign-in.google {
+  background: #F44336;
+  background: linear-gradient(#F44336, #ce3328 50%);
+}
+
+.buttons-sign .sign-in.google:active {
+  background: linear-gradient(#ce3328, #F44336 50%);
+}
+
+.buttons-sign .sign-in.linkedin {
+  background: #0091ca;
+  background: linear-gradient(#0091ca, #017cad 50%);
+}
+
+.buttons-sign .sign-in.linkedin:active {
+  background: linear-gradient(#017cad, #0091ca 50%);
+}
+
+.buttons-sign .sign-in.facebook {
+  background: #4e69a2;
+  background: linear-gradient(#4e69a2, #3b5998 50%);
+}
+
+.buttons-sign .sign-in.facebook:active {
+  background: linear-gradient(#3b5998, #4e69a2 50%);
+}
+
+.o-auth button {
+  width: 32.33%;
+  float: left;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  padding: 6px 5px;
+}
+
+.normal-sign-in>div {
+  float: left;
+  width: 50%;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.forgot-password a {
+  display: inline-block;
+  padding: 7px 0;
+  cursor: pointer;
+  color: #1c4c63;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.form-option {
+  margin: 0px -10px;
+  margin-bottom: -10px;
+  padding: 10px 10px;
+  border-top: 1px solid #ececec;
+  background: #f7f7f7;
+  border-bottom-right-radius: 5px;
+  color: #777;
+  font-size: 12px;
+  text-align: left;
+}
+
+.form-option a {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.form-option a:hover {
+  text-decoration: underline;
+}
+
+.hide-mobile {
+  margin-right: 4px;
+}
+
+@media(max-width:767px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+
+.App-link {
+  color: #61dafb;
 }
 
 .App-logo {
@@ -7,25 +187,11 @@
   height: 40vmin;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

@@ -1,0 +1,51 @@
+@import url('//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+@import url('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap-grid.css');
+
+*,*:before,*:after{
+    -webkit-box-sizing:border-box;
+            box-sizing:border-box;
+}
+body{
+    margin:0;
+    font-family: 'Open Sans', sans-serif;
+    font-size:14px;
+    line-height:1.2;
+}
+[clear]:before,[clear]:after{
+    content:"";
+    display:block;
+    clear:both;
+}
+[tabindex="0"]:focus, a:focus {
+    outline: #ababab dashed 1px;
+}
+.to-right {
+    float: right;
+}
+.to-left {
+    float: left;
+}
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    margin: 10px 0;
+    color: #2e2e2e;
+}
+/*-------------------Dark Theme---------------|START----------*/
+body.dark{
+    color:#000;
+}
+/*-------------------Dark Theme---------------|END----------*/
+
+
+
+/*-------------------Dark Theme---------------|START----------*/
+body.light{
+    color:#fff;
+}
+/*-------------------Dark Theme---------------|END----------*/
