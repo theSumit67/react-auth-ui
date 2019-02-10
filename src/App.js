@@ -3,6 +3,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './App.css';
 import './common.css';
 
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const PASS_REGEX = /^(?=.*[\d])(?=.*[!@#$%^&*])[\w!@#$%^&*]{6,16}$/;
+
+const formValid = formErrors => {
+  let valid = true;
+
+  Object.values( formErrors ).forEach(val => {
+    val.length > 0 && ( valid = false );
+  });
+
+  return valid;
+};
+
+
 class App extends Component {
   constructor( props ) {
     super ( props );
@@ -10,28 +24,52 @@ class App extends Component {
     this.handleSubmit  = this.handleSubmit.bind(this);
     this.state = {
         email: '',
-        password: '' 
+        password: '',
+        formErrors: {
+          email: '',
+          password: '',
+        }
     }
 
-    // var someProperty = { ...this.state.email }
-    // someProperty.flag = true;
   }
 
   changeHandler = event => {
     console.log(event)
-    const name = event.target.name;
-    const value = event.target.value;
+    const { name, value } = event.target;
 
-    this.setState({
-      formControls: {
-        [name]: value
-      }
-    });
+    let formErrors = this.state.formErrors;
+
+    switch (name) {
+      case 'email':
+        formErrors.email = EMAIL_REGEX.test( value ) ? ''
+          : 'Invalid Email.' 
+        break;
+      case 'password':
+        formErrors.password = PASS_REGEX.test( value ) ? ''
+          : 'Password length should be 6-16 and contain at least one number/letter/symbol.';
+        break;
+    
+      default:
+        break;
+    }
+
+    this.setState({ formErrors, [name]: value }, () => console.log( this.state ));
+    // this.setState({
+    //   formControls: {
+    //     [name]: value
+    //   }
+    // });
 
   }
-  handleSubmit(e) {
+  handleSubmit = e => {
     e.preventDefault();
     let userData = this.state;
+
+    if ( formValid( this.state.formErrors ) ){
+      console.info( this.state );
+    } else {
+      console.error( 'err . . .' );
+    }
 
     fetch('/fakeCall',{
         method: "POST",
@@ -61,14 +99,16 @@ class App extends Component {
                   <label>Email</label>
                   <input type="email" 
                     name="email" 
-                    value={this.state.email} 
-                    onChange={e => this.setState({ email : e.target.value })}
+                    noValidate
+                    // value={this.state.email} 
+                    onChange={this.changeHandler}
                   />
                   <label>Password</label>
                   <input type="password" 
                     name="password" 
-                    value={this.state.password} 
-                    onChange={e => this.setState({password : e.target.value })}
+                    noValidate
+                    // value={this.state.password} 
+                    onChange={this.changeHandler}
                   />
                   <div className="buttons-sign">
                     <div className="normal-sign-in" clear>
